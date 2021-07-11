@@ -3,7 +3,7 @@ const fs = require('fs')
 /**
  * db
 **/
-const _afk = JSON.parse(fs.readFileSync('./database/.json/afk.json'))
+const _afk = JSON.parse(fs.readFileSync('./database/json/afk.json'))
 
 /**
  * Add AFK user.
@@ -14,7 +14,7 @@ const _afk = JSON.parse(fs.readFileSync('./database/.json/afk.json'))
 const addAfkUser = (userId, time, reason) => {
     const obj = { id: userId, time: time, reason: reason }
     _afk.push(obj)
-    fs.writeFileSync('./database/.json/afk.json', JSON.stringify(_afk))
+    fs.writeFileSync('./database/json/afk.json', JSON.stringify(_afk))
 }
 
 /**
@@ -102,7 +102,7 @@ const afkDel = (userid) =>{
     Object.keys(_afk).forEach((i) => {
         if (_afk[i].id === userId) {
             _afk.splice(i, 1)
-            fs.writeFileSync('./database/.json/afk.json', JSON.stringify(_afk))
+            fs.writeFileSync('./database/json/afk.json', JSON.stringify(_afk))
         }
     })
 }
