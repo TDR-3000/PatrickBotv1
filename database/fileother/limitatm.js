@@ -3,8 +3,8 @@ const fs = require('fs')
 /**
  * GET db
 **/
-const _limit = JSON.parse(fs.readFileSync('./database/.json/limit.json'))
-const uang = JSON.parse(fs.readFileSync('./database/.json/uang.json'))
+const _limit = JSON.parse(fs.readFileSync('./database/json/limit.json'))
+const uang = JSON.parse(fs.readFileSync('./database/json/uang.json'))
 
 /**
  * add atm user to db
@@ -13,7 +13,7 @@ const uang = JSON.parse(fs.readFileSync('./database/.json/uang.json'))
 const addATM = (userid) => {
 	const obj = {id: userid, uang : 0}
     uang.push(obj)
-    fs.writeFileSync('./database/.json/uang.json', JSON.stringify(uang))
+    fs.writeFileSync('./database/json/uang.json', JSON.stringify(uang))
 }
 
 /**
@@ -31,7 +31,7 @@ const addKoinUser = (userid, amount) => {
     })
     if (position !== false) {
         uang[position].uang += amount
-        fs.writeFileSync('./database/.json/uang.json', JSON.stringify(uang))
+        fs.writeFileSync('./database/json/uang.json', JSON.stringify(uang))
     }
 }
 
@@ -66,7 +66,7 @@ const bayarLimit = (userid, amount) => {
     })
     if (position !== false) {
         _limit[position].limit -= amount
-        fs.writeFileSync('./database/.json/limit.json', JSON.stringify(_limit))
+        fs.writeFileSync('./database/json/limit.json', JSON.stringify(_limit))
     }
 }
 	
@@ -84,7 +84,7 @@ const confirmATM = (userid, amount) => {
     })
     if (position !== false) {
         uang[position].uang -= amount
-        fs.writeFileSync('./database/.json/uang.json', JSON.stringify(uang))
+        fs.writeFileSync('./database/json/uang.json', JSON.stringify(uang))
     }
 }
 
@@ -101,7 +101,7 @@ const limitAdd = (userid) => {
     })
     if (position !== false) {
         _limit[position].limit += 1
-        fs.writeFileSync('./database/.json/limit.json', JSON.stringify(_limit))
+        fs.writeFileSync('./database/json/limit.json', JSON.stringify(_limit))
     }
 } 
 
