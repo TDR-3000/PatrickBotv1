@@ -3,7 +3,7 @@ const fs = require('fs')
 /**
  * GET file db
 **/
-const _level = JSON.parse(fs.readFileSync('./database/.json/level.json'))
+const _level = JSON.parse(fs.readFileSync('./database/json/level.json'))
 
 /**
  * GET xp user from db
@@ -70,7 +70,7 @@ const addLevelingXp = (userid, amount) => {
     })
     if (position !== false) {
         _level[position].xp += amount
-        fs.writeFileSync('./database/.json/level.json', JSON.stringify(_level))
+        fs.writeFileSync('./database/json/level.json', JSON.stringify(_level))
     }
 }
 
@@ -88,7 +88,7 @@ const addLevelingLevel = (userid, amount) => {
     })
     if (position !== false) {
         _level[position].level += amount
-        fs.writeFileSync('./database/.json/level.json', JSON.stringify(_level))
+        fs.writeFileSync('./database/json/level.json', JSON.stringify(_level))
     }
 }
 
@@ -99,7 +99,7 @@ const addLevelingLevel = (userid, amount) => {
 const addLevelingId = (userid) => {
     const obj = {id: userid, xp: 1, level: 1}
     _level.push(obj)
-    fs.writeFileSync('./database/.json/level.json', JSON.stringify(_level))
+    fs.writeFileSync('./database/json/level.json', JSON.stringify(_level))
 }
 
 module.exports = {
