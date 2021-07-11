@@ -65,12 +65,12 @@ const fs = require("fs")
 const cd = 4.32e+7
 
 /******************* LIB & JSON File *******************/
-const { wait, simih, getBuffer, h2k, generateMessageID, getGroupAdmins, getRandom, banner, start, info, success, close } = require('./lib/.plugins/functions')
-const { convertSticker } = require('./lib/.plugins/swm.js')
-const { fetchJson } = require('./lib/.plugins/fetcher')
-const { recognize } = require('./lib/.plugins/ocr')
-const { color, bgcolor } = require('./lib/.plugins/color')
-const { cmdadd } = require('./lib/.plugins/totalcmd')
+const { wait, simih, getBuffer, h2k, generateMessageID, getGroupAdmins, getRandom, banner, start, info, success, close } = require('./lib/plugins/functions')
+const { convertSticker } = require('./lib/plugins/swm.js')
+const { fetchJson } = require('./lib/plugins/fetcher')
+const { recognize } = require('./lib/plugins/ocr')
+const { color, bgcolor } = require('./lib/plugins/color')
+const { cmdadd } = require('./lib/plugins/totalcmd')
 const { animesaran } = require('./lib/animesaran')
 const { animesaran2 } = require('./lib/animesaran2')
 const { bahasa } = require('./lib/bahasa')
@@ -85,28 +85,28 @@ const mathtebak = JSON.parse(fs.readFileSync('./src/mathtebak.json'))
 let number1 = JSON.parse(fs.readFileSync('./src/number1.json'))
 let number2 = JSON.parse(fs.readFileSync('./src/number2.json'))
 
-const antilink = JSON.parse(fs.readFileSync('./database/.json/antilink.json'))
-const antivirtex = JSON.parse(fs.readFileSync('./database/.json/antivirtex.json'))
-const antisticker = JSON.parse(fs.readFileSync('./database/.json/antisticker.json'))
-const samih = JSON.parse(fs.readFileSync('./database/.json/simi.json'))
-const event = JSON.parse(fs.readFileSync('./database/.json/event.json'))
-const badword = JSON.parse(fs.readFileSync('./database/.json/badword.json'))
-const welcome = JSON.parse(fs.readFileSync('./database/.json/welcome.json'))
+const antilink = JSON.parse(fs.readFileSync('./database/json/antilink.json'))
+const antivirtex = JSON.parse(fs.readFileSync('./database/json/antivirtex.json'))
+const antisticker = JSON.parse(fs.readFileSync('./database/json/antisticker.json'))
+const samih = JSON.parse(fs.readFileSync('./database/json/simi.json'))
+const event = JSON.parse(fs.readFileSync('./database/json/event.json'))
+const badword = JSON.parse(fs.readFileSync('./database/json/badword.json'))
+const welcome = JSON.parse(fs.readFileSync('./database/json/welcome.json'))
 
 const setiker = JSON.parse(fs.readFileSync('./storage/stik.json'))
 const videonye = JSON.parse(fs.readFileSync('./storage/video.json'))
 const audionye = JSON.parse(fs.readFileSync('./storage/audio.json'))
 const imagenye = JSON.parse(fs.readFileSync('./storage/image.json'))
-const _leveling = JSON.parse(fs.readFileSync('./database/.json/leveling.json'))
-const _level = JSON.parse(fs.readFileSync('./database/.json/level.json'))
-const _registered = JSON.parse(fs.readFileSync('./database/.json/registered.json'))
-const _limit = JSON.parse(fs.readFileSync('./database/.json/limit.json'))
-const uang = JSON.parse(fs.readFileSync('./database/.json/uang.json'))
-const nsfw = JSON.parse(fs.readFileSync('./database/.json/nsfw.json'))
-const patrickadmin = JSON.parse(fs.readFileSync('./database/.json/botadmin.json'))
-const prem = JSON.parse(fs.readFileSync('./database/.json/prem.json'))
-const ban = JSON.parse(fs.readFileSync('./database/.json/banned.json'))
-const bad = JSON.parse(fs.readFileSync('./database/.json/bad.json'))
+const _leveling = JSON.parse(fs.readFileSync('./database/json/leveling.json'))
+const _level = JSON.parse(fs.readFileSync('./database/json/level.json'))
+const _registered = JSON.parse(fs.readFileSync('./database/json/registered.json'))
+const _limit = JSON.parse(fs.readFileSync('./database/json/limit.json'))
+const uang = JSON.parse(fs.readFileSync('./database/json/uang.json'))
+const nsfw = JSON.parse(fs.readFileSync('./database/json/nsfw.json'))
+const patrickadmin = JSON.parse(fs.readFileSync('./database/json/botadmin.json'))
+const prem = JSON.parse(fs.readFileSync('./database/json/prem.json'))
+const ban = JSON.parse(fs.readFileSync('./database/json/banned.json'))
+const bad = JSON.parse(fs.readFileSync('./database/json/bad.json'))
 const bacotrandom = JSON.parse(fs.readFileSync('./src/bacot.json'))
 const pepolu = JSON.parse(fs.readFileSync('./src/totalcmd.json'))[0].totalcmd
 
@@ -156,14 +156,14 @@ const {
 	addLevelingXp,
 	addLevelingLevel,
 	addLevelingId
-} = require('./database/.fileother/level.js')
+} = require('./database/fileother/level.js')
 
 const {
 	getRegisteredRandomId,
 	addRegisteredUser,
 	createSerial,
 	checkRegisteredUser
-} = require('./database/.fileother/register.js')
+} = require('./database/fileother/register.js')
 
 const {
 	addATM,
@@ -172,7 +172,7 @@ const {
 	bayarLimit,
 	confirmATM,
 	limitAdd
-} = require('./database/.fileother/limitatm.js')
+} = require('./database/fileother/limitatm.js')
 
 const {
 	addAfkUser,
@@ -182,7 +182,7 @@ const {
     getAfkId,
     getAfkPosition,
     afkDel
-} = require('./database/.fileother/afk.js')
+} = require('./database/fileother/afk.js')
 
 const checkAfkUse1r = (mentionedJid) => {
     let status = false
@@ -217,7 +217,7 @@ const checkAfkUse1r = (mentionedJid) => {
 		        if (position !== null) {
 		            console.log(`Premium expired: ${prem[position].id}`)
 		            prem.splice(position, 1)
-		            fs.writeFileSync('./database/.json/prem.json', JSON.stringify(prem))
+		            fs.writeFileSync('./database/json/prem.json', JSON.stringify(prem))
 		           }
 		         }, 1000)
 		      } 
@@ -573,7 +573,7 @@ Welcome To *${mdata.subject}*
 			patrick.sendMessage(from, pesan, tipe, {quoted: { key: { fromMe: false, participant: `${target}`, ...(from ? { remoteJid: from } : {}) }, message: { conversation: `${target2}` }}})
 			}
 			const patrickhay = (pesan, tipe, target, target2) => {
-		    patrick.sendMessage(from, pesan, tipe, { 'contextInfo': {mentionedJid: [sender], 'forwardingScore': 999,'isForwarded': true}, quoted: { 'key': { 'participant': `${target}`, 'remoteJid': '393470602054-1351628616@g.us', 'fromMe': false, 'id': 'B391837A58338BA8186C47E51FFDFD4A' }, 'message': { 'documentMessage': { 'jpegThumbnail': fs.readFileSync('./lib/.image/logo.jpeg'), 'mimetype': 'application/octet-stream', 'title': `${target2}`, 'fileLength': '36', 'pageCount': 0, 'fileName': `${target2}` }}, 'messageTimestamp': '1614069378', 'status': 'PENDING'}})
+		    patrick.sendMessage(from, pesan, tipe, { 'contextInfo': {mentionedJid: [sender], 'forwardingScore': 999,'isForwarded': true}, quoted: { 'key': { 'participant': `${target}`, 'remoteJid': '393470602054-1351628616@g.us', 'fromMe': false, 'id': 'B391837A58338BA8186C47E51FFDFD4A' }, 'message': { 'documentMessage': { 'jpegThumbnail': fs.readFileSync('./lib/image/logo.jpeg'), 'mimetype': 'application/octet-stream', 'title': `${target2}`, 'fileLength': '36', 'pageCount': 0, 'fileName': `${target2}` }}, 'messageTimestamp': '1614069378', 'status': 'PENDING'}})
 		    }
 		    const sendPtt = (teks) => {
 		    patrick.sendMessage(from, audio, mp3, {quoted:mek})
@@ -696,7 +696,7 @@ Welcome To *${mdata.subject}*
                             "fileEncSha256": "sR9D2RS5JSifw49HeBADguI23fWDz1aZu4faWG/CyRY=",
                             "directPath": "/v/t62.7118-24/21427642_840952686474581_572788076332761430_n.enc?oh=3f57c1ba2fcab95f2c0bb475d72720ba&oe=602F3D69",
                             "mediaKeyTimestamp": "1610993486",
-                            "jpegThumbnail": fs.readFileSync('./lib/.image/logo.jpeg'),
+                            "jpegThumbnail": fs.readFileSync('./lib/image/logo.jpeg'),
                             "scansSidecar": "1W0XhfaAcDwc7xh1R8lca6Qg/1bB4naFCSngM2LKO2NoP5RI7K+zLw=="
                         }
                     }
@@ -705,9 +705,9 @@ Welcome To *${mdata.subject}*
         }
 
 			/******************* Clock PatrickBot  *******************/               
-			const freply = { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: '6283136505591-1614953337@g.us' } : {}) }, message: { 'imageMessage': { 'url': 'https://mmg.whatsapp.net/d/f/At0x7ZdIvuicfjlf9oWS6A3AR9XPh0P-hZIVPLsI70nM.enc', 'mimetype': 'image/png', 'caption': `${ucapanFakereply}`, 'fileSha256': '+Ia+Dwib70Y1CWRMAP9QLJKjIJt54fKycOfB2OEZbTU=', 'fileLength': '28777', 'height': 1080, 'width': 1079, 'mediaKey': 'vXmRR7ZUeDWjXy5iQk17TrowBzuwRya0errAFnXxbGc=', 'fileEncSha256': 'sR9D2RS5JSifw49HeBADguI23fWDz1aZu4faWG/CyRY=', 'directPath': '/v/t62.7118-24/21427642_840952686474581_572788076332761430_n.enc?oh=3f57c1ba2fcab95f2c0bb475d72720ba&oe=602F3D69', 'mediaKeyTimestamp': '1610993486', 'jpegThumbnail': fs.readFileSync('./lib/.image/logo.jpeg')} } }
-			const ftoko = { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: 'status@broadcast' } : {}) }, message: { 'productMessage': { 'product': { 'productImage':{ 'mimetype': 'image/jpeg', 'jpegThumbnail': fs.readFileSync('./lib/.image/logo.jpeg') }, 'title': `${ucapanFakereply}`, 'productImageCount': 9999 }, 'businessOwnerJid': `0@s.whatsapp.net`}}}
-			const fkontak = { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: `0@s.whatsapp.net` } : {}) }, message: { 'contactMessage': { 'displayName': `${ucapanFakereply}`, 'vcard': `BEGIN:VCARD\nVERSION:3.0\nN:XL;${ucapanFakereply},;;;\nFN:${ucapanFakereply},\nitem1.TEL;waid=${sender.split('@')[0]}:${sender.split('@')[0]}\nitem1.X-ABLabel:Ponsel\nEND:VCARD`, 'jpegThumbnail': fs.readFileSync('./lib/.image/logo.jpeg')}}}        
+			const freply = { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: '6283136505591-1614953337@g.us' } : {}) }, message: { 'imageMessage': { 'url': 'https://mmg.whatsapp.net/d/f/At0x7ZdIvuicfjlf9oWS6A3AR9XPh0P-hZIVPLsI70nM.enc', 'mimetype': 'image/png', 'caption': `${ucapanFakereply}`, 'fileSha256': '+Ia+Dwib70Y1CWRMAP9QLJKjIJt54fKycOfB2OEZbTU=', 'fileLength': '28777', 'height': 1080, 'width': 1079, 'mediaKey': 'vXmRR7ZUeDWjXy5iQk17TrowBzuwRya0errAFnXxbGc=', 'fileEncSha256': 'sR9D2RS5JSifw49HeBADguI23fWDz1aZu4faWG/CyRY=', 'directPath': '/v/t62.7118-24/21427642_840952686474581_572788076332761430_n.enc?oh=3f57c1ba2fcab95f2c0bb475d72720ba&oe=602F3D69', 'mediaKeyTimestamp': '1610993486', 'jpegThumbnail': fs.readFileSync('./lib/image/logo.jpeg')} } }
+			const ftoko = { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: 'status@broadcast' } : {}) }, message: { 'productMessage': { 'product': { 'productImage':{ 'mimetype': 'image/jpeg', 'jpegThumbnail': fs.readFileSync('./lib/image/logo.jpeg') }, 'title': `${ucapanFakereply}`, 'productImageCount': 9999 }, 'businessOwnerJid': `0@s.whatsapp.net`}}}
+			const fkontak = { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: `0@s.whatsapp.net` } : {}) }, message: { 'contactMessage': { 'displayName': `${ucapanFakereply}`, 'vcard': `BEGIN:VCARD\nVERSION:3.0\nN:XL;${ucapanFakereply},;;;\nFN:${ucapanFakereply},\nitem1.TEL;waid=${sender.split('@')[0]}:${sender.split('@')[0]}\nitem1.X-ABLabel:Ponsel\nEND:VCARD`, 'jpegThumbnail': fs.readFileSync('./lib/image/logo.jpeg')}}}        
 			const wita = moment.tz('Asia/Makassar').format('HH:mm:ss')
 			const wit = moment.tz('Asia/Jayapura').format('HH:mm:ss')
 			const wib = moment.tz('Asia/Jakarta').format('HH:mm:ss')
@@ -992,7 +992,7 @@ Welcome To *${mdata.subject}*
                     if (found === false) {
                         let obj = { id: sender, limit: 1 }
                         _limit.push(obj)
-                        fs.writeFileSync('./database/.json/limit.json', JSON.stringify(_limit))
+                        fs.writeFileSync('./database/json/limit.json', JSON.stringify(_limit))
                         patrick.sendMessage(from, ind.limitcount(limitCounts), text, { quoted : mek})
                     }
 				}
@@ -1018,7 +1018,7 @@ Welcome To *${mdata.subject}*
                if (position === false) {
            	const obj = { id: sender, limit: 1 }
                 _limit.push(obj)
-                fs.writeFileSync('./database/.json/limit.json',JSON.stringify(_limit))
+                fs.writeFileSync('./database/json/limit.json',JSON.stringify(_limit))
                 return false
                 }
              }
@@ -1118,7 +1118,7 @@ Welcome To *${mdata.subject}*
                   }
             if (checkAfkUser(sender) && !isCmd && isGroup) {
                 afk.splice(getAfkPosition(sender, afk), 1)
-                fs.writeFileSync('./database/.json/afk.json', JSON.stringify(afk))
+                fs.writeFileSync('./database/json/afk.json', JSON.stringify(afk))
                 	patrick.sendMessage(from, ind.afkDone(pushname), text)
             }
             
@@ -1562,7 +1562,7 @@ ${a}▫️ Total Premium User : ${prem.length}${a}
                 if ( checkATMuser(sender) >= jadipremu ) {
 				const jpnom = `${sender.split("@")[0]}@s.whatsapp.net`
 				prem.push(jpnom)
-                fs.writeFileSync('./database/.json/prem.json', JSON.stringify(prem))
+                fs.writeFileSync('./database/json/prem.json', JSON.stringify(prem))
                 reply(`Selamat *${pushname}*\nAnda Mendapatkan Premium User `)
                 confirmATM(sender, jadipremu)
                  }
@@ -1576,7 +1576,7 @@ ${a}▫️ Total Premium User : ${prem.length}${a}
 				mente = `${sender.split('@','')}@s.whatsapp.net`
 				const pnom = {id: mente , expired: Date.now() + toMs(expired) }
 				prem.push(pnom) 
-				fs.writeFileSync('./database/.json/prem.json',JSON.stringify(prem))
+				fs.writeFileSync('./database/json/prem.json',JSON.stringify(prem))
 				reply('Anda Mendapatkan Premium 7 Day')
                 } else
                 if (args[0] === `pa7rickGanz` ) {
@@ -1584,7 +1584,7 @@ ${a}▫️ Total Premium User : ${prem.length}${a}
 				mente = `${sender.split('@','')}@s.whatsapp.net`
 				const ynom = {id: mente , expired: Date.now() + toMs(expired) }
 				prem.push(ynom) 
-				fs.writeFileSync('./database/.json/prem.json',JSON.stringify(prem))
+				fs.writeFileSync('./database/json/prem.json',JSON.stringify(prem))
 				reply('Anda Mendapatkan Premium 30 Day')
                 } else 
                 if (args[0] === `${trial}` ) {
@@ -1592,7 +1592,7 @@ ${a}▫️ Total Premium User : ${prem.length}${a}
 				mente = `${sender.split('@','')}@s.whatsapp.net`
 				const onom = {id: mente , expired: Date.now() + toMs(expired) }
 				prem.push(onom) 
-				fs.writeFileSync('./database/.json/prem.json',JSON.stringify(prem))
+				fs.writeFileSync('./database/json/prem.json',JSON.stringify(prem))
 				reply('Anda Mendapatkan Premium 24 Jam')
                 } else{
                 reply('Key Yang Anda Masukan Salah, Silahkan Chat Owner wa.me/${numberOwner}') 
@@ -1738,11 +1738,11 @@ ${a}▫️ ${prefix}owner${a}
 					if (Number(args[0]) === 1) {
 						if (isEventon) return reply('*SUDAH AKTIF* !!!')
 						event.push(from)
-						fs.writeFileSync('./database/.json/event.json', JSON.stringify(event))
+						fs.writeFileSync('./database/json/event.json', JSON.stringify(event))
 						reply('*❬ SUKSES ❭ MENGAKTIFKAN EVENT DI GRUB INI*')
 					  } else if (Number(args[0]) === 0) {
 						event.splice(from, 1)
-						fs.writeFileSync('./database/.json/event.json', JSON.stringify(event))
+						fs.writeFileSync('./database/json/event.json', JSON.stringify(event))
 						reply('*❬ SUKSES ❭ MENONAKTIFKAN EVENT DI GRUB INI*')
 					  } else {
 						reply(ind.satukos())
@@ -1753,7 +1753,7 @@ ${a}▫️ ${prefix}owner${a}
 					var ngonsol = []
 					rest = _limit.indexOf([])
 					_limit.splice(rest)
-					fs.writeFileSync('./database/.json/limit.json', JSON.stringify(ngonsol))
+					fs.writeFileSync('./database/json/limit.json', JSON.stringify(ngonsol))
 					fakestatus(`Limit Telah Direset`)
 					break
                     case 'setthumb':
@@ -1761,10 +1761,10 @@ ${a}▫️ ${prefix}owner${a}
                 if (!isQuotedImage) return reply('reply image nya kak!')
                 const dappp = JSON.parse(JSON.stringify(dap).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo
                 const uhuy = await patrick.downloadMediaMessage(dappp)
-                fs.unlinkSync(`./lib/.image/logo.jpeg`)
+                fs.unlinkSync(`./lib/image/logo.jpeg`)
                 await sleep(2000)
-                fs.writeFileSync(`./lib/.image/logo.jpeg`, uhuy)
-                patrick.sendMessage(from, 'Sukses Ngab!!', text, { sendEphemeral: true, thumbnail: fs.readFileSync('./lib/.image/logo.jpeg', 'base64')})
+                fs.writeFileSync(`./lib/image/logo.jpeg`, uhuy)
+                patrick.sendMessage(from, 'Sukses Ngab!!', text, { sendEphemeral: true, thumbnail: fs.readFileSync('./lib/image/logo.jpeg', 'base64')})
                 break
                 case 'receive':
 				if (!isRegistered) return reply(ind.noregis())
@@ -1861,7 +1861,7 @@ ${a}▫️ ${prefix}owner${a}
 				mente = `${args[0].replace('@','')}@s.whatsapp.net`
 				const pnom = {id: mente , expired: Date.now() + toMs(expired) }
 				prem.push(pnom) 
-				fs.writeFileSync('./database/.json/prem.json',JSON.stringify(prem))
+				fs.writeFileSync('./database/json/prem.json',JSON.stringify(prem))
 				reply(ind.premadd(args[0]))
 				} else 
 				if (isAdmin) {
@@ -1870,7 +1870,7 @@ ${a}▫️ ${prefix}owner${a}
 				mente = `${args[0].replace('@','')}@s.whatsapp.net`
 				const pnom = {id: mente , expired: Date.now() + toMs(expired) }
 				prem.push(pnom) 
-				fs.writeFileSync('./database/.json/prem.json',JSON.stringify(prem))
+				fs.writeFileSync('./database/json/prem.json',JSON.stringify(prem))
 				reply(ind.premadd(args[0]))
 				}
 				break
@@ -1883,7 +1883,7 @@ ${a}▫️ ${prefix}owner${a}
  		       if ( arr[i] === mente) { 
     		      	  arr.splice(i, 1); 
       		   	  i--; 
-      				fs.writeFileSync('./database/.json/prem.json',JSON.stringify(arr))
+      				fs.writeFileSync('./database/json/prem.json',JSON.stringify(arr))
        			 }
  			    }
 				reply(ind.dellprem(args[0]))
@@ -1893,28 +1893,28 @@ ${a}▫️ ${prefix}owner${a}
 					if (!isOwner || !isAdmin) return reply(ind.ownerb())
 					bnnd = body.slice(6)
 					ban.push(`${bnnd}@s.whatsapp.net`)
-					fs.writeFileSync('./database/.json/banned.json', JSON.stringify(ban))
+					fs.writeFileSync('./database/json/banned.json', JSON.stringify(ban))
 					reply(`Nomor wa.me/${bnnd} telah dibanned !`)
 					break
 				case 'unban':
 					if (!isOwner || !isAdmin) return reply(ind.ownerb())
 					bnnd = body.slice(8)
 					ban.splice(`${bnnd}@s.whatsapp.net`, 1)
-					fs.writeFileSync('./database/.json/banned.json', JSON.stringify(ban))
+					fs.writeFileSync('./database/json/banned.json', JSON.stringify(ban))
 					reply(`Nomor wa.me/${bnnd} telah di unban!`)
 					break
                  case 'oadmin':
 					if (!isOwner) return reply(ind.ownerb())
 					admbot = body.slice(6)
 					patrickadmin.push(`${admbot}@s.whatsapp.net`)
-					fs.writeFileSync('./database/.json/admin.json', JSON.stringify(patrickadmin))
+					fs.writeFileSync('./database/json/admin.json', JSON.stringify(patrickadmin))
 					reply(`Nomor wa.me/${admbot} telah dijadikan admin PatrickBot!`)
 					break
 				case 'odeladmin':
 					if (!isOwner) return reply(ind.ownerb())
 					admbot = body.slice(8)
 					patrickadmin.splice(`${admbot}@s.whatsapp.net`, 1)
-					fs.writeFileSync('./database/.json/admin.json', JSON.stringify(patrickadmin))
+					fs.writeFileSync('./database/json/admin.json', JSON.stringify(patrickadmin))
 					reply(`Nomor wa.me/${admbot} telah di unadmin PatrickBot!`)
 					break
 				case 'setreply':
@@ -1989,7 +1989,7 @@ ${a}▫️ ${prefix}owner${a}
                 if (args.length < 1) return reply( `Kirim perintah ${prefix}addbadword [kata kasar]. contoh ${prefix}addbadword bego`)
                 const bw = body.slice(11)
                 bad.push(bw)
-                fs.writeFileSync('./database/.json/bad.json', JSON.stringify(bad))
+                fs.writeFileSync('./database/json/bad.json', JSON.stringify(bad))
                 reply('Success Menambahkan Bad Word!')
                 break
 
@@ -1999,7 +1999,7 @@ ${a}▫️ ${prefix}owner${a}
                 if (args.length < 1) return reply( `Kirim perintah ${prefix}addbadword [kata kasar]. contoh ${prefix}addbadword bego`)
                 let dbw = body.slice(11)
                 bad.splice(dbw)
-                fs.writeFileSync('./database/.json/bad.json', JSON.stringify(bad))
+                fs.writeFileSync('./database/json/bad.json', JSON.stringify(bad))
                 reply('Success Menghapu BAD WORD!')
                 break 
 //==========================================BATES NGAB==========================================\\
@@ -2402,7 +2402,7 @@ ${a}▫️ ${prefix}artinama${a}
                     data["board"] = board
                     data["step"] = 0
                     tictactoe[penantang.split("@")[0]] = data
-                    fs.writeFileSync("./lib/.plugins/tictactoe.json", JSON.stringify(tictactoe))
+                    fs.writeFileSync("./lib/plugins/tictactoe.json", JSON.stringify(tictactoe))
                 })
                 break
                  case 'bisakah':
@@ -2621,7 +2621,7 @@ ${a}▫️ ${prefix}ciumadmin${a}
 					if (args[0] === 'on' ) {
 						if (isAntiLink) return reply('[❗] Fitur antilink sudah aktif')
 						     antilink.push(from)
-						     fs.writeFileSync('./database/.json/antilink.json', JSON.stringify(antilink))
+						     fs.writeFileSync('./database/json/antilink.json', JSON.stringify(antilink))
 						     reply('[❗] Berhasil mengaktifkan fitur antilink pada group ini')
 						     patrick.sendMessage(from,`ALLERT!!! Jika bukan admin jangan kirim link grup`, text)
 					    } else 
@@ -2629,7 +2629,7 @@ ${a}▫️ ${prefix}ciumadmin${a}
 						if (!isAntiLink) return reply('[❗] Fitur antilink belum aktif')
 						      var ini = anti.botLangsexOf(from)
 						      antilink.splice(ini, 1)
-						      fs.writeFileSync('./database/.json/antilink.json', JSON.stringify(antilink))
+						      fs.writeFileSync('./database/json/antilink.json', JSON.stringify(antilink))
 						      reply('[❗] Berhasil menonaktifkan fitur antilink pada group ini')
 					     } else {
 						 reply(ind.acces())
@@ -3495,7 +3495,7 @@ ${a}▫️ ${prefix}stalkig${a}
                 case 'banlist':
                 case 'listban':
 				if (!isRegistered) return reply(ind.noregis()) 
-				const benn = JSON.parse(fs.readFileSync('./database/.json/banned.json'))
+				const benn = JSON.parse(fs.readFileSync('./database/json/banned.json'))
 				teks = '*==[ List Ban ]==*\n'
 				for (let benn of ban){
 					teks += `┣➢ @${benn.replace('@s.whatsapp.net','')}\n`
@@ -3644,11 +3644,11 @@ ${a}▫️ ${prefix}stalkig${a}
                 if (args[0] === 'on') {
                 if (isBadWord) return reply('Fitur BadWord sudah aktif sebelum nya')
                 badword.push(from)
-                fs.writeFileSync('./database/.json/badword.json', JSON.stringify(badword))
+                fs.writeFileSync('./database/json/badword.json', JSON.stringify(badword))
                 reply(`Fitur Badword Enable!`)
               	} else if (args[0] === 'off') {
                 badword.splice(from, 1)
-                fs.writeFileSync('./database/.json/badword.json', JSON.stringify(badword))
+                fs.writeFileSync('./database/json/badword.json', JSON.stringify(badword))
                 reply(`Fitur Badword Disable`)
                 } else {
                 reply(ind.acces())
@@ -3662,12 +3662,12 @@ ${a}▫️ ${prefix}stalkig${a}
                 if (args[0] === 'on') {
                 if (!isAntiSticker) return reply('Udah On')
                 antisticker.push(from)
-                fs.writeFileSync('./database/.json/badword.json', JSON.stringify(antisticker))
+                fs.writeFileSync('./database/json/badword.json', JSON.stringify(antisticker))
                 reply(`Fitur Anti Spam Sticker Enable!\nDilarang Kirim 5 Sticker!`)
               	} else if (args[0] === 'off') {
               	if (isAntiSticker) return reply('Belom on')
                 antisticker.splice(from, 1)
-                fs.writeFileSync('./database/.json/antisticker.json', JSON.stringify(antisticker))
+                fs.writeFileSync('./database/json/antisticker.json', JSON.stringify(antisticker))
                 reply(`Fitur Badword Disable`)
                 } else {
                 reply(ind.acces())
@@ -3680,13 +3680,13 @@ ${a}▫️ ${prefix}stalkig${a}
 					if (args[0] === 'on' ) {
 						if (isSimi) return reply('SUDAH AKTIF !!!')
 						samih.push(from)
-						fs.writeFileSync('./database/.json/simi.json', JSON.stringify(samih))
+						fs.writeFileSync('./database/json/simi.json', JSON.stringify(samih))
 						reply('❬ SUKSES ❭ MENGAKTIFKAN FITUR SIMI DI GRUB INI')
 					    } else 
                         if (args[0] === 'off' ) {
                         if (!isSimi) return reply('Beloolmmm AKTIF !!!')
 						samih.splice(from, 1)
-						fs.writeFileSync('./database/.json/simi.json', JSON.stringify(samih))
+						fs.writeFileSync('./database/json/simi.json', JSON.stringify(samih))
 						reply('❬ SUKSES ❭ MENONAKTIFKAN FITUR SIMI DI GRUB INI')
 				        } else {
 						reply(ind.acces())
@@ -3699,11 +3699,11 @@ ${a}▫️ ${prefix}stalkig${a}
 					if (args[0] === 'on') {
 						if (isNsfw) return reply(' *sudah aktif*  !!')
 						nsfw.push(from)
-						fs.writeFileSync('./database/.json/nsfw.json', JSON.stringify(nsfw))
+						fs.writeFileSync('./database/json/nsfw.json', JSON.stringify(nsfw))
 						reply('❬ SUKSES ❭ Mengaktifkan NSFW di grub ini')
 					    } else if (args[0] === 'off') {
 						nsfw.splice(from, 1)
-						fs.writeFileSync('./database/.json/nsfw.json', JSON.stringify(nsfw))
+						fs.writeFileSync('./database/json/nsfw.json', JSON.stringify(nsfw))
 						reply('❬ SUKSES ❭ Menonaktifkan NSFW di grub ini')
 					    } else {
 						reply(ind.acces())
@@ -3716,11 +3716,11 @@ ${a}▫️ ${prefix}stalkig${a}
                 if (args[0] === 'on') {
                     if (isLevelingOn) return reply('*fitur level sudah aktif sebelum nya*')
                       _leveling.push(from)
-                     fs.writeFileSync('./database/.json/leveling.json', JSON.stringify(_leveling))
+                     fs.writeFileSync('./database/json/leveling.json', JSON.stringify(_leveling))
                      reply(ind.lvlon())
                      } else if (args[0] === 'off') {
                      _leveling.splice(from, 1)
-                     fs.writeFileSync('./database/.json/leveling.json', JSON.stringify(_leveling))
+                     fs.writeFileSync('./database/json/leveling.json', JSON.stringify(_leveling))
                      reply(ind.lvloff())
                      } else {
                      reply(ind.acces())
@@ -3733,11 +3733,11 @@ ${a}▫️ ${prefix}stalkig${a}
 					if (args[0] === 'on') {
 						if (isWelcome) return reply('*SUDAH AKTIF* !!!')
 						welcome.push(from)
-						fs.writeFileSync('./database/.json/welcome.json', JSON.stringify(welcome))
+						fs.writeFileSync('./database/json/welcome.json', JSON.stringify(welcome))
 						reply('❬ SUKSES ❭ Mengaktifkan fitur Welcome/Left di grub ini')
 					    } else if (args[0] === 'off') {
 						welcome.splice(from, 1)
-						fs.writeFileSync('./database/.json/welcome.json', JSON.stringify(welcome))
+						fs.writeFileSync('./database/json/welcome.json', JSON.stringify(welcome))
 						reply('❬ SUKSES ❭ Menonaktifkan Welcome/Left di grub ini')
 				        } else {
 						reply(ind.acces())
