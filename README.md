@@ -25,7 +25,7 @@
 # installation
 ## 📝 Cloning this repo
 ```bash
-> git clone https://github.com/IndonesianDev/whatsapp-bot
+> git clone https://github.com/PatrickStar720/PatrickBotv1.git
 > cd whatsapp-bot
 ```
 
