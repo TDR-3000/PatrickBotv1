@@ -4,7 +4,7 @@ const crypto = require('crypto')
 /**
  * GET db
 **/
-const _registered = JSON.parse(fs.readFileSync('./database/.json/registered.json'))
+const _registered = JSON.parse(fs.readFileSync('./database/json/registered.json'))
 
 /**
  * GET random user from db
@@ -25,7 +25,7 @@ const getRegisteredRandomId = () => {
 const addRegisteredUser = (userid, name, age, time, serials) => {
     const obj = { id: userid, name: name, age: age, time: time, serial: serials }
     _registered.push(obj)
-    fs.writeFileSync('./database/.json/registered.json', JSON.stringify(_registered))
+    fs.writeFileSync('./database/json/registered.json', JSON.stringify(_registered))
 }
 
 /**
