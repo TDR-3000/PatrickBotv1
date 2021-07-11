@@ -10,11 +10,11 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/IndonesianDev/whatsapp-bot#Requirements">Persyaratan</a> •
-  <a href="https://github.com/IndonesianDev/whatsapp-bot#installation">Cara Penginstalan</a> •
-  <a href="https://github.com/IndonesianDev/whatsapp-bot#features">Fiturnya</a> •
-  <a href="https://github.com/IndonesianDev/whatsapp-bot#thanks-to">Terimakasih Kepada</a> •
-  <a href="https://github.com/IndonesianDev/whatsapp-bott#license">lisensi</a>
+  <a>Persyaratan</a> •
+  <a>Cara Penginstalan</a> •
+  <a>Fiturnya</a> •
+  <a>Terimakasih Kepada</a> •
+  <a>lisensi</a>
 </p>
   
 <h4 align="center">
@@ -33,33 +33,66 @@
 Edit value yang diperlukan di `settings/setting.json`.
 ```json
 {
-    "limitCount": 10,
-    "ownerNumber": "",
-    "memberLimit": 10,
-    "groupLimit": 50,
-    "medialimitCount": "5",
-    "prefix": "/",
-    "vhtearkey": "Your Apikey In Here",
-    "apikeyz": "Your Apikey In Here",
-    "lolhuman": "Your Apikey In Here",
-    "apizeks": "Your Apikey In Here"
-}
+    "botName" : "PatrickBot",
+    "ownerName" : "@_Pa7rick",
+    "patrickgrupp" : "https://chat.whatsapp.com/KahRdF5GrXq18PY8dQvpKo",
+    "numberOwner" : "6288989029718",
+    "initialLimit" : "45",
+    "authorSticker" : "Created By PatrickBot",
+    "packSticker" : "Follow @_pa7rick :)",
+    "memberLimit" : "10",
+    "numbernye" : 0
+ }
+
 
 ```
 
-`ownerBot`: your WhatsApp number.  
+`botName`: your Name Bot. || Ganti jadi nama botmu.
 
-`prefix`: bot's prefix.  
+`ownerName`: your Name. || Ganti jadi namamu.
 
-`vhtearkey`: VHTear API token. Anda bisa mendapatkannya https://api.vhtear.com/ dengan membeli kunci API Nya dan harga 25k Perbulan.
+`patrickgrupp`: Your LinkGroup. || Ganti jadi link grupmu, kalo gapunya biarin.
 
-`apikeyz`: Hujan Api token. Anda Bisa Mendapatkannya https://hujanapi.xyz silahkan daftar untuk mendapatkan apikey ,  limit 100/day.
+`numberOwner`: Your Whatsapp Number. || Ganti jadi nomor wa mu.
 
-`lolhuman`: Lolhuman token. Anda bisa Mendapatkannya Di https://lolhuman.herokuapp.com/ silahkan daftar untuk mendapatkan apikey
+`initialLimit`: Ganti aja Terserah.
 
-`apizeks` : Api vinz token. Anda bisa mendapatkanya di https://zeks.xyz/ silahkan daftar untuk mendapatkan apikey 
+`authorSticker`: Ganti aja Terserah.
 
-Untuk Mendapatkan Apikey nya , daftar akun terlebih dahulu di website tersebut
+`packSticker`: Ganti aja Terserah.
+
+`memberLimit`: Ganti aja Terserah.
+
+`numbernye`: Jangan diubah nanti ERROR.
+ 
+## ✍️ Edit Apikeynya
+Edit value yang diperlukan di `settings/apikey.json`.
+```json
+{
+      "KeyZeks" : "Your Apikey",
+      "KeyZahir" : "Your Apikey",
+      "KeyLeys" : "Your Apikey",
+      "KeyXteam" : "Your Apikey",
+      "keyDappa" : "Your Apikey",
+      "keyprem" : "pa7rickbot",
+      "shizukaapi" : "onlyonedeveloper"
+ }
+
+
+```
+
+`KeyZeks`: Zeks API, Cari di https://zeks.xyz.com
+
+`KeyZahir`: Zahir API, Cari di https://zahirr-web.herokuapp.com
+
+`KeyLeys`: Leys API, Cari di https://leyscoders-api.herokuapp.com
+
+`KeyXteam`: XTeam API, Cari di https://api.xteam.xyz.com
+
+`KeyDappa`: XTeam API, Cari di https://dapuhy-api.herokuapp.com
+
+`keyprem`: Ganti aja Terserah.
+
 
 ## 🔍 Menginstal dependensi
 ```bash
@@ -76,4 +109,5 @@ Setelah itu pindai kode QR menggunakan WhatsApp Anda di ponsel Anda!
 
 
 # Thanks to
+* Adiwajshing/Baileys
 * ALL Creator Bot
